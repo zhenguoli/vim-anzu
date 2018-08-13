@@ -33,7 +33,7 @@ function! s:update_search_status()
 		if curs_hold || curs_mov
 			if anzu#update(@/,	anzu#get_on_pattern_pos(@/), s:wrapscan_mes()) != -1
 		\	 && anzu_echo_output
-				call feedkeys("\<Plug>(anzu-echohl_search_status)")
+				execute "normal \<Plug>(anzu-echohl_search_status)"
 			endif
 		endif
 	catch /^Vim\%((\a\+)\)\=:E/
@@ -78,7 +78,7 @@ command! -bar AnzuClearSearchCache call anzu#clear_search_cache()
 command! -bar AnzuUpdateSearchStatus
 \	call anzu#update(@/, anzu#get_on_pattern_pos(@/), s:wrapscan_mes())
 command! -bar AnzuUpdateSearchStatusOutput
-\	call anzu#update(@/, anzu#get_on_pattern_pos(@/), s:wrapscan_mes()) 
+\	call anzu#update(@/, anzu#get_on_pattern_pos(@/), s:wrapscan_mes())
 \|		call anzu#echohl_search_status()
 
 
